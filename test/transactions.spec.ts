@@ -75,12 +75,12 @@ describe('Transactions routes', () => {
       .set('Cookie', cookies)
       .expect(200)
 
-    expect(getTransactionResponse.body.transaction).toEqual([
+    expect(getTransactionResponse.body.transaction).toEqual(
       expect.objectContaining({
         title: 'New transaction',
         amount: 5000,
       }),
-    ])
+    )
   })
 
   it('should be able to get the summary', async () => {
@@ -100,7 +100,7 @@ describe('Transactions routes', () => {
       .send({
         title: 'Debit transaction',
         amount: 2000,
-        type: 'credit',
+        type: 'debit',
       })
 
     const summaryResponse = await request(app.server)
